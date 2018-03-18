@@ -6,7 +6,7 @@ const sequelize = require('./sequelize');
 console.error(`Node cluster master ${process.pid} is running`);
 
 cluster.setupMaster({
-  exec: 'worker.js'
+  exec: './server/worker.js'
 });
 
 sequelize
