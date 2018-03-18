@@ -7,7 +7,7 @@ const { account } = require('./models');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json() );
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 app.get('/api/fetch-all-accounts', async (request, response) => {
