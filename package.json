@@ -6,15 +6,20 @@
     "node": "9.8.0"
   },
   "scripts": {
-    "start": "node server",
-    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "node server/master",
+    "heroku-postbuild": "./bin/postbuild.sh"
   },
   "cacheDirectories": [
     "node_modules",
     "react-ui/node_modules"
   ],
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "lodash": "^4.17.5",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.1"
   },
   "repository": {
     "type": "git",
@@ -27,5 +32,7 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "sqlite3": "^4.0.0"
+  }
 }
