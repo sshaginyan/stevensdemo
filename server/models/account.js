@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     lastmodifieddate: DataTypes.TIME
   }, {
     timestamps: false,
+    schema: 'salesforce',
     freezeTableName: true
   });
 
