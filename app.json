@@ -1,6 +1,6 @@
 {
-  "name": "heroku-cra-node",
-  "description": "web app made of create-react-app UI + Node API",
+  "name": "HCNode",
+  "description": "Using Heroku Connect with node.js",
   "scripts": {
   },
   "env": {
@@ -11,7 +11,7 @@
     }
   },
   "addons": [
-
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {
