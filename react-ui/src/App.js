@@ -1,55 +1,94 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './style.css';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      fetching: true
+      accounts: []
     };
   }
 
   componentDidMount() {
-    // fetch('/api')
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error(`status ${response.status}`);
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(json => {
-    //     this.setState({
-    //       message: json.message,
-    //       fetching: false
-    //     });
-    //   }).catch(e => {
-    //     this.setState({
-    //       message: `API call failed: ${e}`,
-    //       fetching: false
-    //     });
-    //   });
+    fetch('/api/fetch-all-accounts')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(accounts => {
+        this.setState({
+          accounts: accounts
+        });
+      }).catch(e => {
+        this.setState({
+          message: `API call failed: ${e}`,
+          fetching: false
+        });
+      });
   }
 
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+
+    const accounts = _.map(this.state.accounts, (account, index) => {
+      return (
+        <div className="dt-row hover-bg-lightest-silver" key={`account-${index}`}>
+          <div className="dtc pv3 f4 bb b--light-silver">
+            { account.name }
+          </div>
+          <div className="dtc pv3 f4 gray bb b--light-silver">
+            <a href={ account.website }>{ account.website }</a>
+          </div>
+          <div className="dtc pv3 f4 gray bb b--light-silver">
+            { account.billingcity }
+          </div>
+          <div className="dtc pv3 f4 gray bb b--light-silver">
+            <Link to={`/accounts/${ account.id }`}>Show</Link>
+          </div>
+          <div className="dtc pv3 f4 gray bb b--light-silver">
+            <Link to={`/accounts/${ account.id }/edit`}>Edit</Link>
+          </div>
         </div>
-        <p className="App-intro">
-          {'This is it '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
-        </p>
-        <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-        </p>
+      );
+    });
+
+    return (
+      <div>
+        <header className="bg-gradient-primary h5">
+          <div className="tc">
+            <div className="washed-blue heading">Account List</div>
+          </div>
+        </header>
+        <div>
+          <div className="tc">
+            <div className="purple subheading">Listing Accounts from Salesforce Org</div>
+          </div>
+        </div>
+        <div>
+          <Link to="/accounts/new">Create New Account</Link>
+        </div>
+        <div>
+          <div className="dt w-100 mb3 has-focus hk-hide-bb-last-row sortable-chosen">
+            <div className="dtc pv3 b bb b--light-silver dark-gray f5">
+              Account Name
+            </div>
+            <div className="dtc pv3 b bb b--light-silver dark-gray f5">
+              Website
+            </div>
+            <div className="dtc pv3 b bb b--light-silver dark-gray f5">
+              City
+            </div>
+            <div className="dtc pv3 b bb b--light-silver dark-gray f5">
+            </div>
+            <div className="dtc pv3 b bb b--light-silver dark-gray f5">
+            </div>
+            { accounts }
+          </div>
+        </div>
       </div>
     );
   }

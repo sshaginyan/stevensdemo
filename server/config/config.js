@@ -20,7 +20,7 @@ module.exports = {
     password: null,
     dialect: 'sqlite',
     database: 'HCNode',
-    storage: './hcnode.sqlite'
+    storage: './server/hcnode.sqlite'
   },
   production: {
     ...prodConf,
