@@ -29,7 +29,7 @@ Click on Heroku Connect under Add-Ons
 
 Once you launch Heroku connect, you will be asked to create a new schema and connection to your salesforce org.
 
-Map the following fields over in Heroku Connect, or just import the [ggn-hcdemo-connect-config.json](https://raw.githubusercontent.com/sshaginyan/HCNodeDemo/master/ggn-hcdemo_connect_config.json) file to load the configuration:
+Map the following fields over in Heroku Connect, or just import the [hcnodedemo.json](https://raw.githubusercontent.com/sshaginyan/HCNodeDemo/master/hcnodedemo.json) file to load the configuration:
 
  * accountnumber
  * accountsource

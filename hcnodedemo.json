@@ -1,0 +1,55 @@
+{
+  "mappings": [
+    {
+      "object_name": "Account",
+      "config": {
+        "access": "read_only",
+        "sf_notify_enabled": false,
+        "sf_polling_seconds": 600,
+        "sf_max_daily_api_calls": 30000,
+        "fields": {
+          "BillingCity": {},
+          "BillingLatitude": {},
+          "AccountSource": {},
+          "Name": {},
+          "LastModifiedDate": {},
+          "Phone": {},
+          "IsDeleted": {},
+          "SystemModstamp": {},
+          "BillingPostalCode": {},
+          "External_id__c": {},
+          "BillingLongitude": {},
+          "CreatedDate": {},
+          "BillingState": {},
+          "Website": {},
+          "BillingCountry": {},
+          "Id": {},
+          "Description": {},
+          "Fax": {},
+          "BillingStreet": {}
+        },
+        "indexes": {
+          "LastModifiedDate": {
+            "unique": false
+          },
+          "SystemModstamp": {
+            "unique": false
+          },
+          "Id": {
+            "unique": true
+          }
+        }
+      }
+    }
+  ],
+  "connection": {
+    "app_name": "hcnodedemo",
+    "organization_id": "00D6A000002kCLbUAM",
+    "exported_at": "2018-03-20T18:24:28.672160+00:00",
+    "features": {
+      "poll_db_no_merge": true,
+      "poll_external_ids": false
+    }
+  },
+  "version": 1
+}
