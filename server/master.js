@@ -3,22 +3,13 @@ const cluster = require('cluster');
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {
   const { cpus } = require('os');
-  const sequelize = require('./sequelize');
 
   console.error(`Node cluster master ${process.pid} is running`);
 
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-      // Fork workers.
-      for (let index = 0; index < cpus().length; index++) {
-        cluster.fork();
-      }
-    })
-    .catch(error => {
-      console.error('Unable to connect to the database:', error);
-    });
+  // Fork workers.
+  for (let index = 0; index < cpus().length; index++) {
+    cluster.fork();
+  }
 
   cluster.on('exit', (worker, code, signal) => {
     console.error(`Node cluster worker ${worker.process.pid} exited: code ${code}, signal ${signal}`);
