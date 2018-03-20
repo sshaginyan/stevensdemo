@@ -15,19 +15,12 @@ if(!_.isUndefined(DATABASE_URL)) {
 }
 
 module.exports = {
-  // development: {
-  //   username: null,
-  //   password: null,
-  //   dialect: 'sqlite',
-  //   database: 'HCNode',
-  //   storage: './server/hcnode.sqlite'
-  // },
   production: {
-    ...prodConf,
     dialect: 'postgres',
     ssl: true,
     dialectOptions: {
       ssl: true
-    }
+    },
+    use_env_variable: 'DATABASE_URL'
   }
 };
