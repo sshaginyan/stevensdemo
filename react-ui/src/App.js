@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      livedb: true,
       accounts: []
     };
   }
@@ -21,9 +22,15 @@ class App extends Component {
         return response.json();
       })
       .then(accounts => {
-        this.setState({
-          accounts: accounts
-        });
+        if(accounts.livedb === false) {
+          this.setState({
+            livedb: false
+          });
+        } else {
+          this.setState({
+            accounts: accounts
+          });
+        }
       }).catch(e => {
         this.setState({
           message: `API call failed: ${e}`,
@@ -56,6 +63,19 @@ class App extends Component {
       );
     });
 
+    let livedbMessage = '';
+
+    if(this.state.livedb === false) {
+      livedbMessage = (
+        <div className="mb3 has-focus sortable-chosen">
+          <div className="bt bb pa2 bg-lightest-red red b--light-red white">
+            <div className="f4 b">
+              A database doesn't exist yet.
+            </div>
+          </div>
+        </div>);
+    }
+
     return (
       <div>
         <header className="bg-gradient-primary h5">
@@ -67,6 +87,9 @@ class App extends Component {
           <div className="tc">
             <div className="purple subheading">Listing Accounts from Salesforce Org</div>
           </div>
+        </div>
+        <div>
+          { livedbMessage }
         </div>
         <div>
           <Link to="/accounts/new">Create New Account</Link>

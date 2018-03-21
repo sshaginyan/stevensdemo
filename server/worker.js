@@ -13,10 +13,14 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 app.get('/api/fetch-all-accounts', async (request, response) => {
 
-  const records = await account.findAll({}, {
-    attributes: ['id', 'name', 'website', 'billingcity']
-  }).map(el => el.get({ plain: true }));
-  response.json(records);
+  if(!process.env.DATABASE_URL) {
+    response.json({ livedb: false });
+  } else {
+    const records = await account.findAll({}, {
+      attributes: ['id', 'name', 'website', 'billingcity']
+    }).map(el => el.get({ plain: true }));
+    response.json(records);
+  }
 
 });
 
