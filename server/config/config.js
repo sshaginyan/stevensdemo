@@ -1,3 +1,5 @@
+const use_env_variable = process.env.DATABASE_URL || '';
+
 module.exports = {
   production: {
     dialect: 'postgres',
@@ -5,6 +7,6 @@ module.exports = {
     dialectOptions: {
       ssl: true
     },
-    use_env_variable: ''
+    use_env_variable
   }
 };
