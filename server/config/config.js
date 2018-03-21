@@ -5,6 +5,6 @@ module.exports = {
     dialectOptions: {
       ssl: true
     },
-    use_env_variable: 'DATABASE_URL'
+    use_env_variable: 'NODE_ENV'
   }
 };
