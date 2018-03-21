@@ -95,6 +95,9 @@ class App extends Component {
           <Link to="/accounts/new">Create New Account</Link>
         </div>
         <div>
+          <h3>Hello World!</h3>
+        </div>
+        <div>
           <div className="dt w-100 mb3 has-focus hk-hide-bb-last-row sortable-chosen">
             <div className="dtc pv3 b bb b--light-silver dark-gray f5">
               Account Name
