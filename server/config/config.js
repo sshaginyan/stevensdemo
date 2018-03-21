@@ -1,4 +1,4 @@
-const use_env_variable = process.env.DATABASE_URL || '';
+const use_env_variable = process.env.DATABASE_URL ? 'DATABASE_URL' || '';
 
 module.exports = {
   production: {
