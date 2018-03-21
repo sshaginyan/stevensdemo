@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { account } = require('./models');
-const sequelize = require('./sequelize');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
