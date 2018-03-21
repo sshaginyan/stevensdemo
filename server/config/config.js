@@ -4,7 +4,7 @@ module.exports = {
     ssl: true,
     dialectOptions: {
       ssl: true
-    },
-    use_env_variable: 'DATABASE_URL'
+    }
+    //use_env_variable: 'DATABASE_URL'
   }
 };
