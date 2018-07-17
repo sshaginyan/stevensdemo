@@ -80,7 +80,7 @@ class App extends Component {
       <div>
         <header className="bg-gradient-primary h5">
           <div className="tc">
-            <div className="washed-blue heading">Account List</div>
+            <div className="washed-blue heading">Account List by Steven Shaginyan</div>
           </div>
         </header>
         <div>
