@@ -11,7 +11,6 @@
     }
   },
   "addons": [
-    "herokuconnect:demo",
     "heroku-postgresql:hobby-dev"
   ],
   "buildpacks": [
