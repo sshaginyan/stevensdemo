@@ -6,6 +6,7 @@
     "node": "9.8.0"
   },
   "scripts": {
+    "test": "True",
     "start": "node server",
     "heroku-postbuild": "./bin/postbuild.sh"
   },
